@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package api.errors_reason;
+import "errors/errors.proto";
+
+option go_package = "ecommerce/api/errors_reason;errors_reason";
+
+enum ErrorReason {
+  // Set default error code.
+  option (errors.default_code) = 500;
+
+  // Set the error code separately for an enumeration.
+  INTERNAL_SERVER_ERROR = 0 [(errors.code) = 500];
+  USER_NOT_FOUND = 1 [(errors.code) = 404];
+  CONTENT_MISSING = 2 [(errors.code) = 422];
+  BAD_REQUEST = 3 [(errors.code) = 400];
+  UNAUTHORIZED = 4 [(errors.code) = 401];
+}

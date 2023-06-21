@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package api.v1.auth.buyer;
+
+import "google/api/annotations.proto";
+
+option go_package = "ecommerce/api/v1/buyer;buyer";
+
+service Buyer {
+	rpc Self (SelfRequest) returns (SelfReply) {
+		option (google.api.http) = {
+      		get: "/v1/auth/buyers/self"
+		};
+	};
+}
+
+message SelfRequest {
+}
+
+message SelfReply {
+	int64 idBuyer = 1;
+	string email = 2;
+}

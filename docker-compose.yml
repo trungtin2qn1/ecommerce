@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  postgres:
+    restart: always
+    container_name: buyer_postgres
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 11234566
+    ports:
+      - 5432:5432
+    networks:
+      - ecommerce
+
+volumes:
+  postgres:
+    driver: local
+  # redis:
+  #   driver: local
+  # etcd:
+  #   driver: local
+
+networks:
+  ecommerce:
+    driver: bridge

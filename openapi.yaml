@@ -1,0 +1,124 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: ""
+    version: 0.0.1
+paths:
+    /v1/auth/buyers/self:
+        get:
+            tags:
+                - Buyer
+            operationId: Buyer_Self
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.v1.auth.buyer.SelfReply'
+    /v1/auth/sellers/self:
+        get:
+            tags:
+                - Seller
+            operationId: Seller_Self
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.v1.auth.seller.SelfReply'
+    /v1/public/login:
+        post:
+            tags:
+                - Auth
+            operationId: Auth_Login
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.v1.public.auth.LoginRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.v1.public.auth.LoginReply'
+    /v1/public/register:
+        post:
+            tags:
+                - Auth
+            operationId: Auth_Register
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.v1.public.auth.RegisterRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.v1.public.auth.RegisterReply'
+components:
+    schemas:
+        api.v1.auth.buyer.SelfReply:
+            type: object
+            properties:
+                idBuyer:
+                    type: integer
+                    format: int64
+                email:
+                    type: string
+        api.v1.auth.seller.SelfReply:
+            type: object
+            properties:
+                idSeller:
+                    type: integer
+                    format: int64
+                email:
+                    type: string
+        api.v1.public.auth.LoginReply:
+            type: object
+            properties:
+                accessToken:
+                    type: string
+                refreshToken:
+                    type: string
+        api.v1.public.auth.LoginRequest:
+            type: object
+            properties:
+                email:
+                    type: string
+                password:
+                    type: string
+                type:
+                    type: integer
+                    format: int32
+        api.v1.public.auth.RegisterReply:
+            type: object
+            properties:
+                accessToken:
+                    type: string
+                refreshToken:
+                    type: string
+        api.v1.public.auth.RegisterRequest:
+            type: object
+            properties:
+                email:
+                    type: string
+                password:
+                    type: string
+                type:
+                    type: integer
+                    format: int32
+tags:
+    - name: Auth
+    - name: Buyer
+    - name: Seller

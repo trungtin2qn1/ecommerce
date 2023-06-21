@@ -1,0 +1,24 @@
+server:
+  http:
+    addr: "0.0.0.0:2000"
+    timeout: 1s
+  grpc:
+    addr: "0.0.0.0:2050"
+    timeout: 1s
+
+data:
+  database:
+    driver: "postgres"
+    host: "192.168.1.11"
+    port: 5432
+    user: "root"
+    password: "11234566"
+    db_name: "ecommerce"
+
+  redis:
+    addr: "192.168.1.11:6379"
+    read_timeout: 0.2s
+    write_timeout: 0.2s
+
+auth:
+  jwt_key: "721ab159fe3ed6c12c1a8e2e55da4d4d"
